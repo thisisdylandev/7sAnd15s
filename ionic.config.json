@@ -1,0 +1,8 @@
+{
+  "name": "MeatPie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "c563597c"
+}

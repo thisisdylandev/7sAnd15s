@@ -45,7 +45,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "lint": "npm run eslint && npm run prettier -- --check",
     "lint:fix": "npm run eslint -- --fix && npm run prettier -- --write",
     "prettier": "prettier \"**/*.ts\"",
@@ -76,5 +75,5 @@
     "lint-staged": "^11.1.1",
     "prettier": "^2.3.2"
   },
-  "description": "An Ionic project"
+  "description": "A hybrid web/mobile app for managing rugby teams"
 }

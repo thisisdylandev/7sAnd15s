@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  commands:
+    linter:
+      run: npm run lint
+    # tests:
+    #   files: git diff --name-only @{push}
+    #   glob: "*.{js,ts, jsx, tsx}"
+    #   run: jest --findRelatedTests {files}

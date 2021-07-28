@@ -1,6 +1,7 @@
-import { ReportHandler } from 'web-vitals';
+import type { ReportHandler } from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) => {
+// TODO: don't use any here, figure out what this is returning
+const reportWebVitals = (onPerfEntry?: ReportHandler): any => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
       getCLS(onPerfEntry);

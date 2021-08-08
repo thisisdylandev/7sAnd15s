@@ -1,6 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 
 const Team: React.FC = () => {
   return (
@@ -16,7 +14,7 @@ const Team: React.FC = () => {
             <IonTitle size="large">Team</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Team page" />
+        <IonButton className="text-2xl">Add Team</IonButton>
       </IonContent>
     </IonPage>
   );

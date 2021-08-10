@@ -14,7 +14,7 @@ const Team: React.FC = () => {
             <IonTitle size="large">Team</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonButton className="text-2xl">Add Team</IonButton>
+        <IonButton>Add Team</IonButton>
       </IonContent>
     </IonPage>
   );

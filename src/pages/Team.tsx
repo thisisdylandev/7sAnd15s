@@ -1,6 +1,9 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 
+import { useFirebase } from '../components/Firebase/FirebaseContext';
+
 const Team: React.FC = () => {
+  const firebase = useFirebase();
   return (
     <IonPage>
       <IonHeader>
@@ -14,7 +17,7 @@ const Team: React.FC = () => {
             <IonTitle size="large">Team</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonButton>Add Team</IonButton>
+        <IonButton onClick={async () => await firebase.logTest()}>Add Team</IonButton>
       </IonContent>
     </IonPage>
   );

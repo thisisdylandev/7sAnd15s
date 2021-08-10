@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import Firebase from './components/Firebase/Firebase';
+import { FirebaseContext } from './components/Firebase/FirebaseContext';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <FirebaseContext.Provider value={new Firebase()}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </FirebaseContext.Provider>,
   document.getElementById('root')
 );
 

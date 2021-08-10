@@ -10,7 +10,6 @@
     "@capacitor/ios": "^3.1.2",
     "@capacitor/keyboard": "1.0.2",
     "@capacitor/status-bar": "1.0.2",
-    "@craco/craco": "^6.2.0",
     "@ionic-native/firebase": "^5.35.0",
     "@ionic/react": "^5.5.0",
     "@ionic/react-router": "^5.5.0",
@@ -47,9 +46,9 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "lint": "npm run eslint && npm run prettier -- --check",
     "lint:fix": "npm run eslint -- --fix && npm run prettier -- --write",
     "prettier": "prettier \"**/*.ts\"",
@@ -80,8 +79,7 @@
     "eslint": "^7.31.0",
     "lint-staged": "^11.1.1",
     "postcss": "^7.0.36",
-    "prettier": "^2.3.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
+    "prettier": "^2.3.2"
   },
   "description": "A hybrid web/mobile app for managing rugby teams"
 }

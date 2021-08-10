@@ -8,9 +8,12 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import firebase from 'firebase/app'
+import "firebase/firestore";
 import { calendarClearSharp, peopleCircleSharp, personCircleOutline } from 'ionicons/icons';
 import { Redirect, Route } from 'react-router-dom';
 
+import { config } from './firebase-credentials';
 import Profile from './pages/Profile';
 import Schedule from './pages/Schedule';
 import Team from './pages/Team';
@@ -33,6 +36,16 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
+firebase.initializeApp({...config});
+
+const db = firebase.firestore();
+
+db.collection("test").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+  });
+});
 
 const App: React.FC = () => (
   <IonApp>

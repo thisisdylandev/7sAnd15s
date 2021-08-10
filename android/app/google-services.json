@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "172403485725",
+    "project_id": "ctrlaltdylan-meatpie",
+    "storage_bucket": "ctrlaltdylan-meatpie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172403485725:android:1e3f536655cc6520e5aaf4",
+        "android_client_info": {
+          "package_name": "com.sevensandfifteens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172403485725-sc2g4a89t70ljbg6bh27srmj227koneu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA65kFRkoDAQSdc2OgTaW4aoxRxDV7D7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172403485725-sc2g4a89t70ljbg6bh27srmj227koneu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172403485725-4h81d729of43plmp02pdl9341d42hqug.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.7sand15s"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

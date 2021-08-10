@@ -1,1 +1,6 @@
-{}
+{
+	"appId": "com.sevensandfifteens",
+	"appName": "7sAnd15s",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

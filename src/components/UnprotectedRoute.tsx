@@ -9,7 +9,7 @@ interface UnprotectedRouteProps {
 const UnprotectedRoute: React.FC<UnprotectedRouteProps> = ({ component: Component, path, isAuthenticated }) => {
 
   return (
-    <Route path={path} render={() => isAuthenticated ? <Redirect to="/login" /> : <Component />} />
+    <Route path={path} render={() => isAuthenticated ? <Redirect to="/team" /> : <Component />} />
   );
 };
 

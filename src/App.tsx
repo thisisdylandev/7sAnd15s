@@ -10,9 +10,10 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { calendarClearSharp, peopleCircleSharp, personCircleOutline } from 'ionicons/icons';
-import { Redirect, Route } from 'react-router-dom';
 
 import { useFirebase } from './components/Firebase/FirebaseContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import UnprotectedRoute from './components/UnprotectedRoute';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Schedule from './pages/Schedule';
@@ -44,30 +45,17 @@ const App: React.FC = () => {
   if (loading) {
     return <IonLoading isOpen translucent />;
   }
-  if (!auth.loggedIn) {
-    return <Login />
-  }
 
   return(
     <IonApp>
         <IonReactRouter>
           <IonTabs>
             <IonRouterOutlet>
-              <Route exact path="/team">
-                <Team />
-              </Route>
-              <Route exact path="/schedule">
-                <Schedule />
-              </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/team" />
-              </Route>
+              <ProtectedRoute path="/team" component={Team} isAuthenticated={auth.loggedIn} />
+              <ProtectedRoute path="/schedule" component={Schedule} isAuthenticated={auth.loggedIn} />
+              <ProtectedRoute path="/profile" component={Profile} isAuthenticated={auth.loggedIn} />
+              <UnprotectedRoute path="/login" component={Login} isAuthenticated={auth.loggedIn} />
+              <UnprotectedRoute path="/signup" component={Login} isAuthenticated={auth.loggedIn} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
               <IonTabButton tab="team" href="/team">

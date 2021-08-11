@@ -51,6 +51,7 @@ const App: React.FC = () => {
         <IonReactRouter>
           <IonTabs>
             <IonRouterOutlet>
+              <ProtectedRoute path="/" component={Team} isAuthenticated={auth.loggedIn} />
               <ProtectedRoute path="/team" component={Team} isAuthenticated={auth.loggedIn} />
               <ProtectedRoute path="/schedule" component={Schedule} isAuthenticated={auth.loggedIn} />
               <ProtectedRoute path="/profile" component={Profile} isAuthenticated={auth.loggedIn} />

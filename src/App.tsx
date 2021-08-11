@@ -2,6 +2,7 @@ import {
   IonApp,
   IonIcon,
   IonLabel,
+  IonLoading,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -11,6 +12,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { calendarClearSharp, peopleCircleSharp, personCircleOutline } from 'ionicons/icons';
 import { Redirect, Route } from 'react-router-dom';
 
+import { useFirebase } from './components/Firebase/FirebaseContext';
+import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Schedule from './pages/Schedule';
 import Team from './pages/Team';
@@ -34,41 +37,56 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/team">
-            <Team />
-          </Route>
-          <Route exact path="/schedule">
-            <Schedule />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/team" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="team" href="/team">
-            <IonIcon icon={peopleCircleSharp} />
-            <IonLabel>Team</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="schedule" href="/schedule">
-            <IonIcon icon={calendarClearSharp} />
-            <IonLabel>Schedule</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={personCircleOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const firebase = useFirebase();
+  const { loading, auth } = firebase.checkAuth();
+  
+  if (loading) {
+    return <IonLoading isOpen translucent />;
+  }
+  if (!auth.loggedIn) {
+    return <Login />
+  }
+
+  return(
+    <IonApp>
+        <IonReactRouter>
+          <IonTabs>
+            <IonRouterOutlet>
+              <Route exact path="/team">
+                <Team />
+              </Route>
+              <Route exact path="/schedule">
+                <Schedule />
+              </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/team" />
+              </Route>
+            </IonRouterOutlet>
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="team" href="/team">
+                <IonIcon icon={peopleCircleSharp} />
+                <IonLabel>Team</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="schedule" href="/schedule">
+                <IonIcon icon={calendarClearSharp} />
+                <IonLabel>Schedule</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="profile" href="/profile">
+                <IonIcon icon={personCircleOutline} />
+                <IonLabel>Profile</IonLabel>
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
+        </IonReactRouter>
+    </IonApp>
+  )
+};
 
 export default App;

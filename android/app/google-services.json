@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "172403485725",
-    "project_id": "ctrlaltdylan-meatpie",
-    "storage_bucket": "ctrlaltdylan-meatpie.appspot.com"
+    "project_number": "862474353632",
+    "project_id": "sevensandfifteens",
+    "storage_bucket": "sevensandfifteens.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:172403485725:android:1e3f536655cc6520e5aaf4",
+        "mobilesdk_app_id": "1:862474353632:android:56acaa9f8d44243b16c985",
         "android_client_info": {
           "package_name": "com.sevensandfifteens"
         }
       },
       "oauth_client": [
         {
-          "client_id": "172403485725-sc2g4a89t70ljbg6bh27srmj227koneu.apps.googleusercontent.com",
+          "client_id": "862474353632-fsdep0u9l1aejmb8p5kdondd2pr3inrp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBA65kFRkoDAQSdc2OgTaW4aoxRxDV7D7g"
+          "current_key": "AIzaSyA-8j0vMNJEoG50CU6OlCbSMWnCqLMIoX4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "172403485725-sc2g4a89t70ljbg6bh27srmj227koneu.apps.googleusercontent.com",
+              "client_id": "862474353632-fsdep0u9l1aejmb8p5kdondd2pr3inrp.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "172403485725-4h81d729of43plmp02pdl9341d42hqug.apps.googleusercontent.com",
+              "client_id": "862474353632-qugm7aovi2juacui29qpbbj5qa9nr87f.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.7sand15s"
+                "bundle_id": "com.sevensandfifteens"
               }
             }
           ]

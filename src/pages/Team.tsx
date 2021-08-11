@@ -17,7 +17,8 @@ const Team: React.FC = () => {
             <IonTitle size="large">Team</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonButton onClick={async () => await firebase.logTest()}>Add Team</IonButton>
+        <IonButton onClick={async () => await firebase.getUsers('test')} className="ion-padding">Add Team</IonButton>
+        <IonButton onClick={async () => await firebase.signOut()} className="ion-padding">Sign Out</IonButton>
       </IonContent>
     </IonPage>
   );

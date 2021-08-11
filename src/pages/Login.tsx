@@ -23,7 +23,7 @@ const Login: React.FC = () => {
         </IonHeader>
         <IonGrid>
             <IonRow className="ion-justify-content-center">
-              <IonCol size="12">
+              <IonCol size="6">
                 <IonItem color="" lines="none">
                   <IonLabel>
                     <IonIcon icon={mailOutline} />
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
               </IonCol>
             </IonRow>
             <IonRow className="ion-justify-content-center">
-              <IonCol size="12">
+              <IonCol size="6">
                 <IonItem color="" lines="none">
                   <IonLabel>
                     <IonIcon icon={keyOutline} />
@@ -59,14 +59,14 @@ const Login: React.FC = () => {
               </IonCol>
             </IonRow>
             <IonRow className="ion-justify-content-center">
-              <IonCol size="12">
+              <IonCol size="6">
                 <IonButton type="submit" expand="block" onClick={() => firebase.signIn(logInEmail, logInPassword)}>
                   Login
                 </IonButton>
               </IonCol>
             </IonRow>
             <IonRow className="ion-justify-content-center">
-              <IonCol size="12">
+              <IonCol size="6">
                 <IonButton type="submit" expand="block" onClick={() => firebase.createUser(logInEmail, logInPassword)}>
                   Sign Up
                 </IonButton>

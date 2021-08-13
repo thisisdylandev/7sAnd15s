@@ -1,4 +1,11 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonButton,
+} from '@ionic/react';
 
 import { useFirebase } from '../components/Firebase/FirebaseContext';
 
@@ -17,8 +24,18 @@ const Team: React.FC = () => {
             <IonTitle size="large">Team</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonButton onClick={async () => await firebase.getUsers('test')} className="ion-padding">Add Team</IonButton>
-        <IonButton onClick={async () => await firebase.signOut()} className="ion-padding">Sign Out</IonButton>
+        <IonButton
+          onClick={async () => await firebase.getUsers('test')}
+          className="ion-padding"
+        >
+          Add Team
+        </IonButton>
+        <IonButton
+          onClick={async () => await firebase.signOut()}
+          className="ion-padding"
+        >
+          Sign Out
+        </IonButton>
       </IonContent>
     </IonPage>
   );

@@ -1,4 +1,4 @@
-import { Route, Redirect } from "react-router";
+import { Route, Redirect } from 'react-router';
 
 interface UnprotectedRouteProps {
   component: React.ComponentType<any>;
@@ -6,10 +6,16 @@ interface UnprotectedRouteProps {
   isAuthenticated: boolean;
 }
 
-const UnprotectedRoute: React.FC<UnprotectedRouteProps> = ({ component: Component, path, isAuthenticated }) => {
-
+const UnprotectedRoute: React.FC<UnprotectedRouteProps> = ({
+  component: Component,
+  path,
+  isAuthenticated,
+}) => {
   return (
-    <Route path={path} render={() => isAuthenticated ? <Redirect to="/team" /> : <Component />} />
+    <Route
+      path={path}
+      render={() => (isAuthenticated ? <Redirect to="/team" /> : <Component />)}
+    />
   );
 };
 

@@ -9,7 +9,11 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { calendarClearSharp, peopleCircleSharp, personCircleOutline } from 'ionicons/icons';
+import {
+  calendarClearSharp,
+  peopleCircleSharp,
+  personCircleOutline,
+} from 'ionicons/icons';
 
 import { useFirebase } from './components/Firebase/FirebaseContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -41,41 +45,65 @@ import './theme/variables.css';
 const App: React.FC = () => {
   const firebase = useFirebase();
   const { loading, auth } = firebase.checkAuth();
-  
+
   if (loading) {
     return <IonLoading isOpen translucent />;
   }
 
-  return(
+  return (
     <IonApp>
-        <IonReactRouter>
-          <IonTabs>
-            <IonRouterOutlet>
-              <ProtectedRoute path="/" component={Team} isAuthenticated={auth.loggedIn} />
-              <ProtectedRoute path="/team" component={Team} isAuthenticated={auth.loggedIn} />
-              <ProtectedRoute path="/schedule" component={Schedule} isAuthenticated={auth.loggedIn} />
-              <ProtectedRoute path="/profile" component={Profile} isAuthenticated={auth.loggedIn} />
-              <UnprotectedRoute path="/login" component={Login} isAuthenticated={auth.loggedIn} />
-              <UnprotectedRoute path="/signup" component={Login} isAuthenticated={auth.loggedIn} />
-            </IonRouterOutlet>
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="team" href="/team">
-                <IonIcon icon={peopleCircleSharp} />
-                <IonLabel>Team</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="schedule" href="/schedule">
-                <IonIcon icon={calendarClearSharp} />
-                <IonLabel>Schedule</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="profile" href="/profile">
-                <IonIcon icon={personCircleOutline} />
-                <IonLabel>Profile</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        </IonReactRouter>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <ProtectedRoute
+              path="/"
+              component={Team}
+              isAuthenticated={auth.loggedIn}
+            />
+            <ProtectedRoute
+              path="/team"
+              component={Team}
+              isAuthenticated={auth.loggedIn}
+            />
+            <ProtectedRoute
+              path="/schedule"
+              component={Schedule}
+              isAuthenticated={auth.loggedIn}
+            />
+            <ProtectedRoute
+              path="/profile"
+              component={Profile}
+              isAuthenticated={auth.loggedIn}
+            />
+            <UnprotectedRoute
+              path="/login"
+              component={Login}
+              isAuthenticated={auth.loggedIn}
+            />
+            <UnprotectedRoute
+              path="/signup"
+              component={Login}
+              isAuthenticated={auth.loggedIn}
+            />
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="team" href="/team">
+              <IonIcon icon={peopleCircleSharp} />
+              <IonLabel>Team</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="schedule" href="/schedule">
+              <IonIcon icon={calendarClearSharp} />
+              <IonLabel>Schedule</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={personCircleOutline} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
     </IonApp>
-  )
+  );
 };
 
 export default App;

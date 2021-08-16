@@ -9,7 +9,17 @@ import {
   onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  addDoc,
+  collection,
+  query,
+  where,
+} from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import { config } from '../../firebase-credentials';
@@ -46,7 +56,6 @@ class Firebase {
         setAuthInit({ loading: false, auth });
       });
     }, []);
-    console.log(authInit);
     return authInit;
   };
 
@@ -91,13 +100,49 @@ class Firebase {
     }
   };
 
-  updateProfile = async (userId: string, profile: Record<string, unknown>) => {
+  updateUser = async (userId: string, profile: any) => {
     const profileRef = doc(this.db, 'profiles', userId);
     await updateDoc(profileRef, {
       firstName: profile.firstName,
       lastName: profile.lastName,
       displayName: profile.displayName,
+      team: profile.team,
     });
+  };
+
+  getTeam = async (teamId: string) => {
+    const teamRef = doc(this.db, 'teams', teamId);
+    const teamSnap = await getDoc(teamRef);
+    if (teamSnap.exists()) {
+      const teamData = teamSnap.data();
+      teamData.id = teamSnap.id;
+      return teamData;
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!');
+    }
+  };
+
+  getTeamDisplayNames = async (teamId: string) => {
+    const q = query(
+      collection(this.db, 'profiles'),
+      where('team', '==', teamId)
+    );
+    const querySnap = await getDocs(q);
+    const profiles: any[] = [];
+    querySnap.forEach(doc => {
+      profiles.push(doc.data());
+    });
+    return profiles;
+  };
+
+  createTeam = async (teamName: string, owner: string) => {
+    const newTeamRef = await addDoc(collection(this.db, 'teams'), {
+      name: teamName,
+      owner: owner,
+      members: [owner],
+    });
+    return newTeamRef.id;
   };
 }
 

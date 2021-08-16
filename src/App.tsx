@@ -18,6 +18,7 @@ import {
 import { useFirebase } from './components/Firebase/FirebaseContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import UnprotectedRoute from './components/UnprotectedRoute';
+import Invite from './pages/Invite';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Schedule from './pages/Schedule';
@@ -63,6 +64,11 @@ const App: React.FC = () => {
             <ProtectedRoute
               path="/team"
               component={Team}
+              isAuthenticated={auth.loggedIn}
+            />
+            <ProtectedRoute
+              path="/invite/:id"
+              component={Invite}
               isAuthenticated={auth.loggedIn}
             />
             <ProtectedRoute

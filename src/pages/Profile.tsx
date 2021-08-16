@@ -3,32 +3,34 @@ import {
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
   IonLoading,
   IonPage,
   IonRow,
-  IonTitle,
-  IonToolbar,
 } from '@ionic/react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useFirebase } from '../components/Firebase/FirebaseContext';
+import Header from '../components/Header';
 
 const Profile: React.FC = () => {
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
     displayName: '',
+    team: '',
   });
   const [loading, setLoading] = useState(true);
   const firebase = useFirebase();
   const user = firebase.auth.currentUser;
 
-  const updateProfile = async () =>
-    await firebase.updateProfile(user.uid, profile);
+  const updateProfile = async () => {
+    setLoading(true);
+    await firebase.updateUser(user.uid, profile).then(setLoading(false));
+  };
+
   const setProfileValues = (e: any) => {
     const newProfile = { ...profile };
     const key = e.target.id as keyof typeof profile;
@@ -51,11 +53,7 @@ const Profile: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle></IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header pageName={profile.displayName} />
       <IonContent fullscreen>
         <IonGrid>
           <IonRow className="ion-justify-content-center">
@@ -66,6 +64,7 @@ const Profile: React.FC = () => {
                   required
                   autofocus={true}
                   id="firstName"
+                  name="firstName"
                   placeholder="First Name"
                   onIonChange={e => setProfileValues(e)}
                   value={profile.firstName}
@@ -80,6 +79,7 @@ const Profile: React.FC = () => {
                 <IonInput
                   required
                   id="lastName"
+                  name="firstName"
                   onIonChange={e => setProfileValues(e)}
                   placeholder="Last Name"
                   value={profile.lastName}
@@ -94,6 +94,7 @@ const Profile: React.FC = () => {
                 <IonInput
                   required
                   id="displayName"
+                  name="firstName"
                   onIonChange={e => setProfileValues(e)}
                   placeholder="Display Name"
                   value={profile.displayName}
@@ -103,7 +104,12 @@ const Profile: React.FC = () => {
           </IonRow>
           <IonRow className="ion-justify-content-center">
             <IonCol size="10" sizeSm="6">
-              <IonButton color="primary" onClick={updateProfile}>
+              <IonButton
+                expand="block"
+                type="submit"
+                color="primary"
+                onClick={updateProfile}
+              >
                 Save
               </IonButton>
             </IonCol>

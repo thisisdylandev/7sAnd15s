@@ -54,10 +54,12 @@ const Team: React.FC = () => {
 
   useEffect(() => {
     const fetchTeam = async () => {
-      const userProfile = await firebase.getProfile(
-        firebase.auth.currentUser.uid
-      );
-      setProfile(userProfile);
+      setLoading(true);
+      await firebase
+        .getProfile(firebase.auth.currentUser.uid)
+        .then((updatedProfile: any) => {
+          setProfile(updatedProfile);
+        });
       if (profile.team) {
         const team = await firebase.getTeam(profile.team);
         const profiles = await firebase.getTeamDisplayNames(profile.team);

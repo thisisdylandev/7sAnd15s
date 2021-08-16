@@ -15,6 +15,7 @@ import {
   getDoc,
   getDocs,
   updateDoc,
+  setDoc,
   addDoc,
   collection,
   query,
@@ -60,12 +61,7 @@ class Firebase {
   };
 
   createUser = async (email: string, password: string) => {
-    createUserWithEmailAndPassword(this.auth, email, password).then(
-      userCredential => {
-        const user = userCredential.user;
-        console.log(user);
-      }
-    );
+    await createUserWithEmailAndPassword(this.auth, email, password);
   };
 
   signIn = (email: string, password: string) => {
@@ -95,7 +91,9 @@ class Firebase {
     if (profileSnap.exists()) {
       return profileSnap.data();
     } else {
-      // doc.data() will be undefined in this case
+      await setDoc(doc(this.db, 'profiles', this.auth.currentUser.uid), {
+        displayName: this.auth.currentUser.email.split('@')[0],
+      });
       console.log('No such document!');
     }
   };

@@ -61,7 +61,7 @@ const Team: React.FC = () => {
         .then((updatedProfile: any) => {
           setProfile(updatedProfile);
         });
-      if (profile.team) {
+      if (profile?.team) {
         const team = await firebase.getTeam(profile.team);
         const profiles = await firebase.getTeamDisplayNames(profile.team);
         const memberList: string[] = [];

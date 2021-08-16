@@ -50,6 +50,7 @@ const Team: React.FC = () => {
     newProfile.team = newTeamId;
     await firebase.updateUser(firebase.auth.currentUser.uid, profile);
     setProfile(newProfile);
+    setOnTeam(true);
   };
 
   useEffect(() => {
@@ -97,7 +98,7 @@ const Team: React.FC = () => {
           </IonRow>
           <IonRow className="ion-justify-content-center">
             <IonCol size="10" sizeSm="6">
-              <IonLabel position="stacked">Last Name:</IonLabel>
+              <IonLabel position="stacked">Team Name:</IonLabel>
               <IonItem color="" lines="none">
                 <IonInput
                   required

@@ -50,14 +50,14 @@ const Team: React.FC = () => {
     };
 
     fetchTeam();
-  }, []);
+  }, [teamId]);
 
   if (loading) {
     return <IonLoading isOpen translucent />;
   }
 
   const renderPageContents = () => {
-    if (profile.team === team.id) {
+    if (profile.team && profile.team === team.id) {
       return (
         <IonRow className="ion-justify-content-center">
           <IonCol size="10" sizeSm="6">
@@ -67,6 +67,18 @@ const Team: React.FC = () => {
                 link below:{' '}
               </h2>
               <p>{`${window.location}`}</p>
+            </IonText>
+          </IonCol>
+        </IonRow>
+      );
+    } else if (profile.team && profile.team !== team.id) {
+      return (
+        <IonRow className="ion-justify-content-center">
+          <IonCol size="10" sizeSm="6">
+            <IonText color="primary">
+              <h2>
+                You can't invite someone to a team you're not a member of!
+              </h2>
             </IonText>
           </IonCol>
         </IonRow>

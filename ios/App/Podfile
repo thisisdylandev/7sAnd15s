@@ -17,8 +17,7 @@ end
 
 target 'App' do
   capacitor_pods
-  pod 'Firebase/Analytics'
+  # Add your Pods here
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-  # Add your Pods here
 end
